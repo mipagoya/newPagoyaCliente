@@ -16,9 +16,9 @@
                 <?php
                     $id_rol =  Auth::user()->role_id;
                     $id_user = Auth::user()->id;
-                    $get_rol = DB::table('tbl_GLOBAL_USER_ROL AS UROL')
+                    $get_rol = DB::table('tbl_global_user_rol AS UROL')
                         ->join('tbl_global_rol AS ROL', 'UROL.id_rol', '=', 'ROL.id')
-                        ->join('USERS AS US', 'UROL.id_user', '=', 'US.id')
+                        ->join('users AS US', 'UROL.id_user', '=', 'US.id')
                         ->select(DB::raw('ROL.id as id_rol, ROL.name AS name_rol '))
                         ->where('UROL.id_user', '=', $id_user)
                         ->where('ROL.estado', '=', "1")

@@ -53,14 +53,14 @@ class MenuController extends Controller
     public function mostrarmenu(Request $request){
         $id_usuario_rol = $role_id = Auth()->user()->role_id;
         $id_submodulo = $request->submod_selected;
-        $menus_modulos = DB::table('tbl_global_menu AS MENU')
-            ->join('tbl_global_rol_menu AS RMENU', 'MENU.id', '=', 'RMENU.id_menu')
-            ->select(DB::raw('menu.name as menuname , MENU.ruta as ruta, 
-                                RMENU.id_menu as idmenu, menu.id_sub_module as submid'))                
+        $menus_modulos = DB::table('tbl_global_menu AS menu')
+            ->join('tbl_global_rol_menu AS rmenu', 'menu.id', '=', 'rmenu.id_menu')
+           ->select(DB::raw('menu.name as menuname , menu.ruta as ruta, 
+                                rmenu.id_menu as idmenu, menu.id_sub_module as submid'))                
             ->where('id_rol', '=', $id_usuario_rol)
             ->where('id_sub_module', '=', $id_submodulo)
 			->where('menu.estado', '=', '1')
-            ->OrderBy('MENU.id', 'ASC')                
+            ->OrderBy('menu.id', 'ASC')                
             ->get();
             
         /*$menu_user = "";

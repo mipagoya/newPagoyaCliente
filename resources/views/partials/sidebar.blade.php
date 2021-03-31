@@ -102,9 +102,9 @@
                     type: "warning",
                     confirmButtonColor: "#DD6B55"
                   });  
-                setTimeout(function() {
-                    window.location = '/login';  
-                }, 3000);                                    
+                //setTimeout(function() {
+                 //   window.location = '/login';  
+               // }, 3000);                                    
             }
         });
     });
