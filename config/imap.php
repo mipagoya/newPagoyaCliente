@@ -100,16 +100,16 @@ return [
     |                               or ['GSSAPI','PLAIN'] if you are using outlook mail
     |
     */
-    'options' => [
-        'delimiter' => '/',
-        'fetch' => FT_UID,
-        'fetch_body' => true,
-        'fetch_attachment' => true,
-        'fetch_flags' => true,
-        'message_key' => 'id',
-        'fetch_order' => 'asc',
-        'open' => [
-            // 'DISABLE_AUTHENTICATOR' => 'GSSAPI'
-        ]
-    ]
+    // 'options' => [
+    //     'delimiter' => '/',
+    //     'fetch' => FT_UID,
+    //     'fetch_body' => true,
+    //     'fetch_attachment' => true,
+    //     'fetch_flags' => true,
+    //     'message_key' => 'id',
+    //     'fetch_order' => 'asc',
+    //     'open' => [
+    //         // 'DISABLE_AUTHENTICATOR' => 'GSSAPI'
+    //     ]
+    // ]
 ];
