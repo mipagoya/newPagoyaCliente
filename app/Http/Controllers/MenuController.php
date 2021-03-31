@@ -23,14 +23,14 @@ class MenuController extends Controller
         $role->menus;
         
         //dd($role->name);
-        $get_menus = DB::table('tbl_GLOBAL_ROL_MENU AS ROLM')
-            ->join('tbl_GLOBAL_MENU AS MENU', 'ROLM.id_menu', '=', 'MENU.id')
-            ->join('tbl_GLOBAL_ROL AS ROL', 'ROLM.id_rol', '=', 'ROL.id')
-            ->join('tbl_GLOBAL_USER_ROL AS UROL', 'ROL.id', '=', 'UROL.id_rol')
+        $get_menus = DB::table('tbl_global_rol_menu AS ROLM')
+            ->join('tbl_global_menu AS MENU', 'ROLM.id_menu', '=', 'MENU.id')
+            ->join('tbl_global_rol AS ROL', 'ROLM.id_rol', '=', 'ROL.id')
+            ->join('tbl_global_user_rol AS UROL', 'ROL.id', '=', 'UROL.id_rol')
             ->join('users AS US', 'UROL.id_user', '=', 'US.id')
-            ->join('tbl_GLOBAL_SUB_MODULE AS SMOD', 'MENU.id_sub_module', '=', 'SMOD.id')
-            ->join('tbl_GLOBAL_MODULE AS MODU', 'SMOD.id_module', '=', 'MODU.id')
-            ->join('tbl_GLOBAL_APPLICATION AS APL', 'MODU.id_application', '=', 'APL.id')
+            ->join('tbl_global_sub_module AS SMOD', 'MENU.id_sub_module', '=', 'SMOD.id')
+            ->join('tbl_global_module AS MODU', 'SMOD.id_module', '=', 'MODU.id')
+            ->join('tbl_global_application AS APL', 'MODU.id_application', '=', 'APL.id')
 
             ->select(DB::raw('APL.name as aplicacion, APL.style as appStyle,
                             MODU.id as id_modulo, MODU.name as modulo, MODU.style as modStyle,
@@ -53,8 +53,8 @@ class MenuController extends Controller
     public function mostrarmenu(Request $request){
         $id_usuario_rol = $role_id = Auth()->user()->role_id;
         $id_submodulo = $request->submod_selected;
-        $menus_modulos = DB::table('tbl_GLOBAL_MENU AS MENU')
-            ->join('tbl_GLOBAL_ROL_MENU AS RMENU', 'MENU.id', '=', 'RMENU.id_menu')
+        $menus_modulos = DB::table('tbl_global_menu AS MENU')
+            ->join('tbl_global_rol_menu AS RMENU', 'MENU.id', '=', 'RMENU.id_menu')
             ->select(DB::raw('menu.name as menuname , MENU.ruta as ruta, 
                                 RMENU.id_menu as idmenu, menu.id_sub_module as submid'))                
             ->where('id_rol', '=', $id_usuario_rol)

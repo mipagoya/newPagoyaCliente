@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Module extends Model
 {
-    protected $table = 'tbl_GLOBAL_MODULE';
+    protected $table = 'tbl_global_module';
 
 
     // public function application()
