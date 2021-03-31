@@ -37,7 +37,7 @@
                                     // dd($app->id);
                                     $menus = DB::table('tbl_GLOBAL_MODULE as mo')
                                     ->join('tbl_GLOBAL_SUB_MODULE as sub','mo.id','=','sub.id_module')
-                                    ->join('tbl_GLOBAL_MENU as menu','sub.id','=','menu.id_sub_module')
+                                    ->join('tbl_global_menu as menu','sub.id','=','menu.id_sub_module')
                                     ->select(DB::raw('mo.name as modulo,mo.id_application,sub.name as subModulo, menu.id as idMenu, menu.name as menu')) 
                                     ->where('mo.id_application','=',$app->id)
                                     ->where('menu.estado', '=', 1)
@@ -57,7 +57,7 @@
                                             echo '<div><label style="text-shadow:0px 0px 0px #000;"><strong>'.$resultado->modulo.'<strong></label>';
                                                 foreach ($menus as $result_mod){
                                                     if($resultado->modulo == $result_mod->modulo){
-                                                    $validaCheck = DB::table('tbl_GLOBAL_ROL_MENU')
+                                                    $validaCheck = DB::table('tbl_global_rol_MENU')
                                                                     ->where('id_rol','=',$rol->id)
                                                                     ->where('id_menu','=',$result_mod->idMenu)
                                                                     ->get();
