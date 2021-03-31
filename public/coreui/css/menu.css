@@ -1,0 +1,31 @@
+.moduloclass{
+    background-color: #DDDFEB !important;
+    border: 1px solid #c2cfd6;
+    color: #021d24  !important ;
+}
+.submoduloclass{
+    background-color: #ffffff !important;
+    border: 1px solid #c2cfd6;
+    color: #021d24 !important ;
+}
+
+.text_menu{      
+    font-size: 13px;
+    font-family: calibri;
+    font-variant: normal;
+    font-weight: 500;
+    line-height: 15.4px;
+}
+
+.breadcrumb{
+    background-color: #ffffff;
+    color: #021d24;
+    border-color: #021d24;
+    border-style: solid;
+    border-width: 0.5px 0.5px 0.5px 0.5px;
+}
+
+.menu_selected{
+    background-color: #ffffff;
+    color: #021d24;
+}

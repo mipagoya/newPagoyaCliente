@@ -1,0 +1,27 @@
+    
+    p#texto{
+        text-align: center;
+        color: white;
+        width: 110%;
+    }
+
+    div#adjImg{
+        height: 36px;
+        position:relative;
+        /* background-color:red; */
+    }
+
+    input#ImgAdjunto{
+        position:absolute;
+        top: 0px;
+        left: 0px;
+        right: 10px;
+        bottom:0px;
+        width: 100%;
+        height: 35px;
+        opacity: 0;
+    }
+    
+    .center {
+        text-align: center;
+    }

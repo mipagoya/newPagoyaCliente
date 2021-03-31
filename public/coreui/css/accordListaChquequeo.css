@@ -1,0 +1,20 @@
+
+    .panel-heading {
+        font-family: "calibri";
+        width:750px;
+        padding: 3px 10px;
+        border: 1px solid rgba(0,0,0,0.3);
+    }
+
+    .panel-heading.active {
+        background-color: #428bca;
+        border: 1px solid rgba(0,0,0,0.8);
+    }
+
+    .panel-heading.active .text_active {
+        color: #fff !important;
+    }
+
+    .panel-collapse{
+        padding: 3px 10px;
+    }
