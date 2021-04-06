@@ -13,8 +13,8 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'prod_mysql'),
-    //'default' => env('DB_CONNECTION', 'test_mysql'),
+    //'default' => env('DB_CONNECTION', 'prod_mysql'),
+    'default' => env('DB_CONNECTION', 'test_mysql'),
 
     /*
     |--------------------------------------------------------------------------

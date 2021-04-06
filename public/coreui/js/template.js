@@ -343,9 +343,7 @@ function formCargaArchivos(url){
   var nombreform= 'form';
   var divresul = 'divResultado';
   var formData = new FormData($("#"+nombreform+"")[0]);
-  if ($("#origen").val() == 'ModalTrazabilidad' || $("#origen").val() == 'ModalListaChequeo') {
-    miurl = 'cargaMetadataModal';
-  }
+ 
   //console.log(formData);
   $.ajax({
     url: miurl,  
@@ -365,9 +363,9 @@ function formCargaArchivos(url){
     },
     //si ha ocurrido un error
     error: function(data){        
-      $("#"+divresul+"").addClass('alert-danger');
+      
       $("#"+divresul+"").html("Ha ocurrido un error "+data.status);
-      $( "#btn-carga" ).prop( "disabled", true );              
+                  
     },
     async: true
   });

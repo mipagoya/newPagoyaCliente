@@ -4,7 +4,14 @@ Route::get('/','Auth\LoginController@showLoginForm');
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 
-Route::get('listCli', 'ClienteController@listCli');
+Route::post('login', 'Auth\LoginController@login');
+Route::get('register', 'Auth\LoginController@register');
+Route::post('saveRegister', 'Auth\LoginController@toRegister');
+Route::post('validaMail', 'Auth\LoginController@existMail');
+
+Route::get('testCorreo', 'Auth\LoginController@testCorreo');
+Route::get('activateCli/{VistaCargar}', 'ClienteController@activateCli');
+Route::get('userActive', 'ClienteController@userActive')->name('userActive');
 
 //grupuGroup route atentications
 Route::group(['middleware' => ['auth']], function(){
@@ -25,9 +32,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::group(['middleware' => 'admin'], function() {
         Route::get('listUser', 'AdminController@listUser');
         Route::get('listClientes', 'AdminController@listClientes');        
-        Route::post('tbdyListClientes', 'AdminController@tbdyListClientes');        
-       
-        
+        Route::post('tbdyListClientes', 'AdminController@tbdyListClientes'); 
     });
 
     //Cambiar ROL:
@@ -41,7 +46,11 @@ Route::group(['middleware' => ['auth']], function(){
     //Route::get('CronLeerCorreo', 'LeerCorreoController@CronLeerCorreo');
     Route::post('abrirCorreo', 'LeerCorreoController@abrirCorreo');
     Route::post('ReenviarCorreoTraz','LeerCorreoController@ReenviarCorreoTraz');
-
+    Route::get('datNegocio', 'ClienteController@dataNegocio');
+    Route::get('datcuenta', 'ClienteController@dataBill');
+    Route::get('datadjDoc', 'ClienteController@adjuntaDoc');
+    Route::post('saveDoc', 'ClienteController@saveDocument');
+    Route::get('veryfiData', 'ClienteController@dataVeryfi');
    
 
 });
