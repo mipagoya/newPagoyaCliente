@@ -15,6 +15,11 @@ class AdminController extends Controller
         return view('admin/listUser') ; 
     }
 
+    public function listClientesTes(){        
+        $users = User::all();
+        dd($users);        
+    }
+
     public function dataTableUser(){     
         //die('dataT');      
         //$roles = Rol::orderBy('name','ASC')->paginate(10); 

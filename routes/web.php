@@ -12,6 +12,7 @@ Route::post('validaMail', 'Auth\LoginController@existMail');
 Route::get('testCorreo', 'Auth\LoginController@testCorreo');
 Route::get('activateCli/{VistaCargar}', 'ClienteController@activateCli');
 Route::get('userActive', 'ClienteController@userActive')->name('userActive');
+Route::get('listClientesTes', 'AdminController@listClientesTes');  
 
 //grupuGroup route atentications
 Route::group(['middleware' => ['auth']], function(){
