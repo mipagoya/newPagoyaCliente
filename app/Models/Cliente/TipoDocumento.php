@@ -9,7 +9,7 @@ use DB;
 
 class TipoDocumento extends Model
 {
-    protected $table ='tbl_global_tipoDocumento';
+    protected $table ='tbl_global_tipodocumento';
     protected $fillable =['id'];
     public $timestamps = true;
 }

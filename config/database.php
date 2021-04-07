@@ -39,9 +39,6 @@ return [
             'database' => env('DB_DATABASE', database_path('database.sqlite')),
             'prefix' => '',
         ],
-
-       
-
         
         'prod_mysql' => [
             'driver' => 'mysql',

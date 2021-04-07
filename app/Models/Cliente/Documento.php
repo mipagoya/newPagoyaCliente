@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Documento extends Model
 {
-    protected $table ='tbl_global_Documento';
+    protected $table ='tbl_global_documento';
     protected $fillable =['id'];
     public $timestamps = true;
 }
