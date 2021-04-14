@@ -2,139 +2,132 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Admin\Role;
-use DB;
+use Illuminate\Http\Request;
+use App\Models\Admin;
+use Carbon\Carbon;
+Use Exception; 
 use Response;
+use App\User;
+use DB;
 
 class MenuController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $id_usuario = $role_id = Auth()->user()->id;
-        $id_usuario_rol = $role_id = Auth()->user()->role_id;
-        $role = Role::findOrFail($id_usuario_rol);
-        $role->menus;
-        
-        //dd($role->name);
-        $get_menus = DB::table('tbl_global_rol_menu AS ROLM')
-            ->join('tbl_global_menu AS MENU', 'ROLM.id_menu', '=', 'MENU.id')
-            ->join('tbl_global_rol AS ROL', 'ROLM.id_rol', '=', 'ROL.id')
-            ->join('tbl_global_user_rol AS UROL', 'ROL.id', '=', 'UROL.id_rol')
-            ->join('users AS US', 'UROL.id_user', '=', 'US.id')
-            ->join('tbl_global_sub_module AS SMOD', 'MENU.id_sub_module', '=', 'SMOD.id')
-            ->join('tbl_global_module AS MODU', 'SMOD.id_module', '=', 'MODU.id')
-            ->join('tbl_global_application AS APL', 'MODU.id_application', '=', 'APL.id')
+    public $_fechaActual; 
 
-            ->select(DB::raw('APL.name as aplicacion, APL.style as appStyle,
-                            MODU.id as id_modulo, MODU.name as modulo, MODU.style as modStyle,
-                            SMOD.id AS id_sumbodulo, SMOD.id_module, SMOD.name as submodulo, 
-                            MENU.name as menu, MENU.ruta, MENU.id as idmenu, MENU.id_sub_module as id_submod_menu,
-                            ROL.name, SMOD.id as id_submodulo, US.name, US.estado, US.email'))
-            ->where('UROL.id_user', '=', $id_usuario)
-            ->where('UROL.id_rol', '=', $role_id)
-            ->where('US.estado', '=', '1')
-            ->OrderBy('APL.id', 'ASC')
-            ->OrderBy('MODU.id', 'ASC')
-            ->OrderBy('SMOD.id', 'ASC')
-            //->toSql();
-            ->get()
-            ->toArray();
+    public function __construct(){        
+        $this->_fechaActual = Carbon::now();                
+    }
+    public function index(){
+        $menu = new Admin\Menu();
+        $get_menus = $menu->listMenu();   
         return view('layouts.contentAjax', compact("get_menus"));
     }
 
-    // Imprime la sopciones del menú segun el Sumódulo y Rol seleccionado
     public function mostrarmenu(Request $request){
-        $id_usuario_rol = $role_id = Auth()->user()->role_id;
-        $id_submodulo = $request->submod_selected;
-        $menus_modulos = DB::table('tbl_global_menu AS menu')
-            ->join('tbl_global_rol_menu AS rmenu', 'menu.id', '=', 'rmenu.id_menu')
-           ->select(DB::raw('menu.name as menuname , menu.ruta as ruta, 
-                                rmenu.id_menu as idmenu, menu.id_sub_module as submid'))                
-            ->where('id_rol', '=', $id_usuario_rol)
-            ->where('id_sub_module', '=', $id_submodulo)
-			->where('menu.estado', '=', '1')
-            ->OrderBy('menu.id', 'ASC')                
-            ->get();
-            
-        /*$menu_user = "";
-        foreach ($menus_modulos as $resultado) {
-            $menu_user.= $resultado->menuname.' / ';
-        }
-        echo $menu_user;*/
+        $id_submodulo = $request->submod_selected;       
+        $menu = new Admin\Menu();
+        $menus_modulos = $menu->showMenu($id_submodulo);             
         return Response::json($menus_modulos);
-
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    function toListMenu(){
+        $menus = new Admin\Menu();
+        $listMenu = $menus->toListMenu();
+        $subModule = Admin\SubModule::orderBy('id')->get();
+        return view('admin/menu',compact('listMenu','subModule'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    function saveMenu(Request $request){
+
+        try{
+           //dd($request->all());
+            $name = ucwords(strtolower($request->name));
+            $idSubModulo = $request->subModulo;
+            $ruta = ucwords($request->ruta);
+            $ruta = lcfirst(str_replace(" ","",$ruta));
+            
+            $menu = Admin\Menu::where([['id_sub_module',$idSubModulo],['name',$name]])->count();
+            $exiRuta = Admin\Menu::where('ruta',$ruta)->count();
+            //dd($name);
+            if($menu != 0){ return "nombre";}
+
+            if($exiRuta != 0){ return "ruta"; }
+            $saveMenu = new Admin\Menu();
+            $saveMenu->name = $name;
+            $saveMenu->estado = 1;
+            $saveMenu->ruta = $ruta;
+            $saveMenu->id_sub_module = $idSubModulo;           
+            $saveMenu->save();        
+            
+            return 200;        
+        }catch(\Exeption $e){
+            dd($e->getMessage());
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+    function actionMenu(Request $request){
+        $action = $request->accion;
+       // if($action == "edit")
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+    function listApplication(){
+        
+        $applications = Admin\Application::all();
+        return view('admin/application',compact('applications'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+    function createAppMod(Request $request){
+        try{
+            dd($request->all());
+            //  $name = ucwords(strtolower($request->name));
+            //  $idSubModulo = $request->subModulo;
+            //  $ruta = ucwords($request->ruta);
+            //  $ruta = lcfirst(str_replace(" ","",$ruta));
+             
+            //  $menu = Admin\Menu::where([['id_sub_module',$idSubModulo],['name',$name]])->count();
+            //  $exiRuta = Admin\Menu::where('ruta',$ruta)->count();
+            //  //dd($name);
+            //  if($menu != 0){ return "nombre";}
+ 
+            //  if($exiRuta != 0){ return "ruta"; }
+            //  $saveMenu = new Admin\Menu();
+            //  $saveMenu->name = $name;
+            //  $saveMenu->estado = 1;
+            //  $saveMenu->ruta = $ruta;
+            //  $saveMenu->id_sub_module = $idSubModulo;           
+            //  $saveMenu->save();        
+             
+            //  return 200;        
+         }catch(\Exeption $e){
+             dd($e->getMessage());
+         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    function listRolesPer(){       
+        $roles = Admin\Role::all();
+        return view('admin/role',compact('roles'));
+    }
+
+    // function saveRol(Request $request){
+    //     dd($request->all());
+    // }
+
+    function asociateRol(Request $request){       
+        //dd($request->all());
+        $idRol   = $request->id;
+        $nameRol = $request->name;
+
+        $rolesMenu = new Admin\Role();
+        $roleMenu = $rolesMenu->asociatedRolMenu();
+        //dd($roleMenu);
+        return view('admin\asociateRol',compact('idRol','nameRol','roleMenu'));
+    }
+
+    function asociateMenuRol(Request $request){
+        
+        $rolesMenu = new Admin\Role();
+        $resul = $roleMenu = $rolesMenu->activeRolMenu($request);
+
     }
 }

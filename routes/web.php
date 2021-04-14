@@ -14,6 +14,8 @@ Route::get('activateCli/{VistaCargar}', 'ClienteController@activateCli');
 Route::get('userActive', 'ClienteController@userActive')->name('userActive');
 Route::get('listClientesTes', 'AdminController@listClientesTes');  
 
+Route::get('form', 'HerramientasController@linkPay');  
+
 //grupuGroup route atentications
 Route::group(['middleware' => ['auth']], function(){
     
@@ -31,17 +33,25 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('welcome', function () { return view('welcome'); })->name('welcome');
        
     Route::group(['middleware' => 'admin'], function() {
-        Route::get('listUser', 'AdminController@listUser');
+        //Route::get('listUser', 'AdminController@listUser');
         Route::get('listClientes', 'AdminController@listClientes');        
-        Route::post('tbdyListClientes', 'AdminController@tbdyListClientes'); 
+        Route::post('tbdyListClientes', 'AdminController@tbdyListClientes');         
+        //Configuracion APP
+        Route::get('listMenus','MenuController@toListMenu');
+        Route::post('createMenu','MenuController@saveMenu');
+        Route::post('accionMenu','MenuController@actionMenu');
+        Route::get('creaApplication','MenuController@listApplication');
+        Route::post('createApp','MenuController@createAppMod');
+        Route::get('listRoles','MenuController@listRolesPer');
+        //Route::post('createRol','MenuController@saveRol');
+        Route::post('asociarRol','MenuController@asociateRol');
+        Route::post('asociarMenuRol','MenuController@asociateMenuRol');
     });
 
     //Cambiar ROL:
     Route::post('updaterol', 'ChangeUserRolController@updaterol');    
     // MENUS Una vez selecciona el Submódulo
     Route::post('mostrarmenu', 'MenuController@mostrarmenu');
-    
-   
 
     //Leer buzon de correo
     //Route::get('CronLeerCorreo', 'LeerCorreoController@CronLeerCorreo');
@@ -52,7 +62,12 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('datadjDoc', 'ClienteController@adjuntaDoc');
     Route::post('saveDoc', 'ClienteController@saveDocument');
     Route::get('veryfiData', 'ClienteController@dataVeryfi');
-   
-
+    
+    //Herramientas
+    Route::get('generaLink', 'HerramientasController@createdLink');
+    Route::get('listaLink', 'HerramientasController@listLink');
+    Route::post('crearLinkPro', 'HerramientasController@createdLinkProduct');
+    Route::post('inactivarLink', 'HerramientasController@inactiveLink');
+    Route::post('descripcionLinkPago', 'HerramientasController@descriptionBtnPay');
 });
 

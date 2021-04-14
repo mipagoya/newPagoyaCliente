@@ -3,13 +3,12 @@
 namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
+Use Exception; 
+use DB;
 
 class Application extends Model
 {
     protected $table = 'tbl_global_application';
-
-    // public function modules()
-    // {
-    // 	return $this->belongsTo('App\Models\Admin\Module')->orderBy('application_id');
-    // }
+    protected $fillable =['id'];
 }

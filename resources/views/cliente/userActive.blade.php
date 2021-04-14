@@ -15,12 +15,9 @@
       }
       .fondo2{
         background-color: #CED3CF;
-      }
-            
+      }            
   </style>
 </head>
-
-
 <body style="background-color: #fff">
     <header class="navbar fondo">
         <img src="imagenes_pagoya/logo.jpg">

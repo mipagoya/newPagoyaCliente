@@ -11,9 +11,9 @@ use DB;
 
 class AdminController extends Controller
 {
-    public function listUser(){      
-        return view('admin/listUser') ; 
-    }
+    // public function listUser(){      
+    //     return view('admin/listUser') ; 
+    // }
 
     public function listClientesTes(){        
         $users = User::all();

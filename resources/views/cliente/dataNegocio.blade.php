@@ -1,4 +1,3 @@
-
 <div class="container" style="background-color: #F3F3F3">
     <div class="row p-2">        
         <span class="display-4">¡BIENVENIDO A PAGOYA!</span>

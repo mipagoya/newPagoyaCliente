@@ -7741,10 +7741,10 @@ base-chart.chart {
 
 @media (min-width: 992px) {
   .brand-minimized .app-header.navbar .navbar-brand {
-    width: 50px;
+    width: 150px;
     background-color: #fff;
-    background-image: url("../img/logo-symbol.png");
-    background-size: 24px;
+    /* background-image: url("../img/logo-symbol.png"); */
+    background-size: 124px;
     border-bottom: 1px solid #c2cfd6; } }
 
 .progress-xs {
@@ -9314,7 +9314,25 @@ hr.transparent {
  background-color: #A3A7AB !important; }  
   
 .bg-grisCL {
- background-color: #D0D1D2 !important; }  
+ background-color: #DDDFEB !important; }  
+.bg-Voscuro{
+ background-color: #021d24 !important; }  
+
+ .bg-verde{
+  background-color: #c6eca0 !important; }  
+
+.text-verde { 
+ color:#9cbc14 !important; }  
+ .a-none{
+   text-decoration: none;
+ }
+
+ .tbody-style{
+    color:#9cbc14;
+    font-size:12px; 
+    border: 1px solid black; 
+    background-color: #021d24;             
+ }
   
   
   

@@ -56,7 +56,7 @@
                             {!! $errors->first('password', '<span class="invalid-feedback">:message</span>') !!}
                         </div>
                         <div class="row">
-                            <div class="col-6"><button type="submit" class="btn btn-success px-4"><strong>Acceder</strong></button></div>                            
+                            <div class="col-6"><button type="submit" class="btn btn-success" style="background-color: #9cbc14"><strong>Acceder</strong></button></div>                            
                         </div>
                         <div class="row">                        
                             <div class="col-6 text-right"><button type="button" class="btn btn-link px-0 text-primary">Olvidaste tu contraseña?</button></div>

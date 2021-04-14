@@ -12,7 +12,7 @@
     foreach ($get_menus as $resultado) {        
         if ($aplicacion != $resultado->aplicacion) {
             $menu_nav .= '  <li class="nav-item nav-dropdown">
-                                <a class="nav-link nav-dropdown-toggle text_menu" href="#"><i class="'.$resultado->appStyle.'"></i><strong>'.$resultado->aplicacion.'</strong></a>
+                                <a class="nav-link nav-dropdown-toggle text_menu" href="#"><i class="text-verde '.$resultado->appStyle.'"></i><strong>'.$resultado->aplicacion.'</strong></a>
                                     <ul class="nav-dropdown-items">';
             foreach ($get_menus as $row_modulo) {
                 if ($resultado->aplicacion == $row_modulo->aplicacion) {
@@ -47,7 +47,7 @@
     }
     $menu_nav .= '       </ul>
                     </nav>
-                <button class="sidebar-minimizer brand-minimizer2" type="button"></button>
+                <button class="sidebar-minimizer brand-minimizer" type="button"></button>
                 </div>';
     echo $menu_nav;
 ?>

@@ -50,8 +50,10 @@ class ClienteController extends Controller
     function adjuntaDoc(){
         $idUser = auth()->user()->id;  
         $tipoDoc = Cliente\TipoDocumento::where('estado',1)->orderBy('name')->get();
-        $exisDocument = Cliente\Documento::where('id_user',$idUser)->get();
         
+        $documentos = new Cliente\Documento();
+        $exisDocument = $documentos->listDocXuser();
+        //dd($exisDocument);
         return view('cliente/adjDocumento',compact('tipoDoc','exisDocument'));
     }
 
