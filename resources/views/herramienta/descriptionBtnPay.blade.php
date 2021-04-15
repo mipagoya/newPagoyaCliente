@@ -1,4 +1,4 @@
-@php $item = $liskLink[0]; @endphp
+@php $item = $liskLink[0];  $direcurl = "http://newformulario.com/form?id=".$item->link; @endphp
 <div class="row bg-grisCL">
     <div class="col-sm-5">
         <div><strong style="font-size: 20px">PREPARATE!</strong></div>
@@ -24,7 +24,7 @@
     <div class="row bg-grisCL" style="padding: 8px 0 0 0">
     <div class="col-sm-10">
         <div class="input-group">
-            <input type="text" class="form-control" id="id_linkCop" value="{{url('/form?id='.$item->link)}}">
+            <input type="text" class="form-control" id="id_linkCop" value="{{$direcurl}}">
             <div class="input-group-append">
                 <span class="btn btn-outline-primary icon-copy" title="Copiar Link" id="btn_copy" onclick="copyLink()"></span>
                <span id="message"></span>
@@ -52,7 +52,7 @@
             </div>
         </div>
     </div>                                                         
-    <div class="col-sm-2" id="id_divA"><a href="{{url('/form?id='.$item->link)}}" id="a-btn" class="d-none" style="padding: 7px; text-decoration: none;background:#021d24;font-weight:bold;border-radius:8px;" target="_blank"></a>
+    <div class="col-sm-2" id="id_divA"><a href="{{$direcurl}}" id="a-btn" class="d-none" style="padding: 7px; text-decoration: none;background:#021d24;font-weight:bold;border-radius:8px;" target="_blank"></a>
     </div>
 </div>
 <div class="row bg-grisCL"> 
