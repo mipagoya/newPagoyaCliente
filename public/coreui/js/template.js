@@ -300,9 +300,7 @@ function init(url) {
 
 }
 
-function menuDinamico(url,data)
-{ 
-  //alert(url);
+function menuDinamico(url,data){   
   //Elimina el fondo inicial
   $( "main" ).removeClass("fondo");
   var divresul = 'contentAjax';

@@ -106,8 +106,8 @@
                 <div class="col-sm-1"> </div>                  
                 <div class="col-sm-11" id="checkTerminos"> 
                     <input name="group" type="checkbox" id="terminos" class="requerido2">        
-                    <small>Al registrarme, declaro que he leído y acepto los <a href="https://mipagoya.com/wp/wp-content/uploads/2020/03/Pol%c3%adticas-Pasarela-Agregadora.pdf">Términos y Condiciones</a>
-                        y <a href="https://mipagoya.com/wp/wp-content/uploads/2020/03/5-Poli%cc%81tica-de-Tratamiento-de-Datos-Personales-Colombia.pdf">la Política de Privacidad</a> y <a href="https://mipagoya.com/wp/wp-content/uploads/2020/03/5-Poli%cc%81tica-de-Tratamiento-de-Datos-Personales-Colombia.pdf">Tratamientos de datos*</a></small>               
+                    <small>Al registrarme, declaro que he leído y acepto los <a href="https://mipagoya.com/wp/wp-content/uploads/2020/03/Pol%c3%adticas-Pasarela-Agregadora.pdf" target="_blank">Términos y Condiciones</a>
+                        y <a href="https://mipagoya.com/wp/wp-content/uploads/2020/03/5-Poli%cc%81tica-de-Tratamiento-de-Datos-Personales-Colombia.pdf" target="_blank">la Política de Privacidad</a> y <a href="https://mipagoya.com/wp/wp-content/uploads/2020/03/5-Poli%cc%81tica-de-Tratamiento-de-Datos-Personales-Colombia.pdf" target="_blank">Tratamientos de datos*</a></small>               
                 </div>                       
             </div>
             <div class="row">
@@ -237,7 +237,7 @@
                         correo:correo,
                         contrasena:contrasena                        
                     };
-                        console.log(data);
+                        
                         let result = ajaxResultJsonIni('saveRegister','divRest',data);
 
                         if(result==200){

@@ -82,18 +82,7 @@
                    // console.log($(this).attr('id') );
                     var id = $(this).attr('id');
                     $(".menu_selected").removeClass("active");
-                    $("#"+id+"").addClass(" active");
-                    
-                    //if(id) #00529B
-
-                    //$(".menu_selected").removeClass("btn-primary");
-                    //$(this).addClass();
-                    //alert("click "+$(this).attr("id"));
-                   // $(".menu_selected").addClass("btn-primary");
-//                    $(".menu_selected").css("color", "#FFF");
-                  //  $(this).css("background-color", "#CEE3F6");
-//$(this).css("color", "#00529B"); 
-                    
+                    $("#"+id+"").addClass("active");                   
                 });
             },
             error: function(data){
