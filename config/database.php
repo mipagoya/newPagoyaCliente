@@ -13,8 +13,8 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'prod_mysql'),
-    //'default' => env('DB_CONNECTION', 'test_mysql'),
+    //'default' => env('DB_CONNECTION', 'prod_mysql'),
+    'default' => env('DB_CONNECTION', 'test_mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -53,8 +53,22 @@ return [
             'strict' => true,
             'engine' => null,
         ],
-
+       
         'test_mysql' => [
+            'driver' => 'mysql',
+            'host' => env('TEST_HOST'),
+            'port' => env('TEST_PORT'),
+            'database' => env('TEST_DATABASE'),
+            'username' => env('TEST_USERNAME'),
+            'password' => env('TEST_PASSWORD'),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+        ],
+
+        'test_mysql2' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
