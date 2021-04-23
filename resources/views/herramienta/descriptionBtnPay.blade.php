@@ -1,4 +1,7 @@
-@php $item = $liskLink[0];  $direcurl = "http://newformulario.com/form?id=".$item->link; @endphp
+@php $item = $liskLink[0];  
+    // $direcurl = "http://newformulario.com/form?id=".$item->link; 
+    $direcurl = "https://formulario.pagoya.com.co/form?id=".$item->link; 
+@endphp
 <div class="row bg-grisCL">
     <div class="col-sm-5">
         <div><strong style="font-size: 20px">PREPARATE!</strong></div>

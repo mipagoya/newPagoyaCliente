@@ -13,7 +13,7 @@ use DB;
 class HerramientasController extends Controller
 {
     function createdLink(){
-        return view('herramienta\link');
+        return view('herramienta/link');
     }
 
     function createdLinkProduct(Request $request){
