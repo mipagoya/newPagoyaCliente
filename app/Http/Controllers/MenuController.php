@@ -121,7 +121,7 @@ class MenuController extends Controller
         $rolesMenu = new Admin\Role();
         $roleMenu = $rolesMenu->asociatedRolMenu();
         //dd($roleMenu);
-        return view('admin\asociateRol',compact('idRol','nameRol','roleMenu'));
+        return view('admin/asociateRol',compact('idRol','nameRol','roleMenu'));
     }
 
     function asociateMenuRol(Request $request){
